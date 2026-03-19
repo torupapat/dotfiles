@@ -1,0 +1,47 @@
+format = """
+[](surface0)\
+$os\
+$directory\
+[](fg:surface0 bg:surface1)\
+$git_branch\
+$git_status\
+[](fg:surface1 bg:mauve)\
+$nodejs\
+$python\
+[](fg:mauve bg:base)\
+$character"""
+
+palette = "catppuccin_mocha"
+
+[palatte.catppuccin_mocha]
+text = "#cdd6f4"
+subtext0 = "#a6adc8"
+surface0 = "#313244"
+surface1 = "#45475a"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+mauve = "#cba6f7"
+sapphire = "#74c7ec"
+lavender = "#b4befe"
+
+[directory]
+style = "bg:surface0 fg:text"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = ".../"
+
+[git_branch]
+symbol = " "
+style = "bg:surface1 fg:text"
+format = "[[ $symbol $branch ]($style)]($style)"
+
+[nodejs]
+symbol = "󰎙 "
+style = "bg:mauve fg:base"
+format = "[[ $symbol ($version) ]($style)]($style)"
+
+[python]
+symbol = " "
+style = "bg:mauve fg:base"
+format = "[[ $symbol ($version) ]($style)]($style)"

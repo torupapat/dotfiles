@@ -1,0 +1,84 @@
+@import "theme.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+window#waybar {
+	background: transparent;
+	border: none;
+}
+
+
+/* Styling the "Pills" */
+#cpu,
+#temperature,
+#pulseaudio,
+#custom-gpu,
+#cpu,
+#workspaces,
+#clock,
+#language,
+#tray,
+#window {
+    background: @base; /* Catppuccin base color */
+    color: @text;
+    border: 2px solid @accent;
+    border-radius: 20px; /* This creates the pill shape */
+    padding: 2px 20px;
+    margin: 5px 5px;
+}
+
+#window {
+	border-color: @mauve;
+	font-weight: bold;
+}
+
+window#waybar.empty #window {
+	background: transparent;
+	border: none;
+}
+
+#workspaces {
+	padding: 0px 5px;
+}
+
+#workspaces button {
+	background: transparent;
+	color: @text;
+	border: none;
+	box-shadow: none;
+	padding: 0px 10px;
+	transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+	background: transparent;
+	color: @accent;
+	border: none;
+}
+
+#workspaces button.visible {
+	color: @mauve;
+	background: transparent;
+	border: none;
+}
+
+#workspaces button.occupied {
+	color: @text;
+	background: transparent;
+	border: none;
+}
+
+#workspaces button.hover {
+	color: @sapphire;
+	background: transparent;
+	border: none;
+}
+
+/* Make GPU color a bit different if you want it to stand out */
+#custom-gpu {
+    border-color: @sapphire;
+    color: @sapphire;
+}

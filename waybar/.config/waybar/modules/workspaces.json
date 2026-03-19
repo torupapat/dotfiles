@@ -1,0 +1,28 @@
+{
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "active-only": false,
+        "on-click": "activate",
+        "format": "{icon} {windows}",
+        "format-window-separator": " ",
+        "window-rewrite-default": "󰄱",
+        "window-rewrite": {
+            "title<.*youtube.*>": "",
+            "class<firefox>": "",
+            "class<firefox> title<.*github.*>": "",
+            "class<kitty>": "",
+            "class<code-oss>": "󰨞",
+            "class<vscode>": "󰨞",
+            "class<discord>": "󰙯",
+            "class<vlc>": "󰕼",
+            "class<thunar>": "󰉋",
+            "class<nm-connection-editor>": "󰤨"
+        },
+        "format-icons": {
+            "default": "",
+            "urgent": "",
+            "active": ""
+        }
+    }
+}

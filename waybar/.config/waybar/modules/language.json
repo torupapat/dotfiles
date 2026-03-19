@@ -1,0 +1,6 @@
+{
+	"hyprland/language": {
+		"format": "󰗊 {short}",
+		"on-click": "hyprctl dispatch keyboard_layout next"
+	}
+} 

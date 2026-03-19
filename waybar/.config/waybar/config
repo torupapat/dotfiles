@@ -1,0 +1,39 @@
+{
+	"layer": "top",
+	"position": "top",
+	"mod" : "dock",
+	"exclusive": true,
+	"passthrough": false,
+	"gtk-layer-shell": true,
+	"height": 40,
+	"margin": 10,
+	"output": ["DP-2", "DP-3"],
+
+	// Import modules
+	"include": [
+		"~/.config/waybar/modules/workspaces.json",
+		"~/.config/waybar/modules/language.json",
+		"~/.config/waybar/modules/volume.json"
+	],
+
+	"modules-left": ["group/pill-left"],
+	"modules-center": ["hyprland/window"],
+	"modules-right": ["group/pill-right"],
+
+	// Define pills
+	"group/pill-left": {
+		"orientation": "horizontal",
+		"modules": ["hyprland/workspaces"],
+	},
+
+	"group/pill-right": {
+		"orientation": "horizontal",
+		"modules": ["pulseaudio", "hyprland/language", "clock", "tray"]
+	},
+
+	// Standard modules
+	"clock": {
+        	"format": "{:%H:%M %p}",
+        	"tooltip-format": "{:%d %B %Y}"
+    }
+}

@@ -1,0 +1,68 @@
+@import "theme.rasi"
+
+* {
+    background-color: transparent;
+    text-color: @text;
+    margin: 0;
+    padding: 0;
+}
+
+window {
+    width: 650px;
+    border: 2px;
+    border-color: @accent;
+    background-color: @base;
+    border-radius: 20px; /* The "Pill" roundness */
+    padding: 20px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+/* The Search Bar */
+inputbar {
+    children: [ prompt, entry ];
+    background-color: @base;
+    border: 1px;
+    border-color: @accent;
+    border-radius: 12px;
+    margin: 0 0 10px 0;
+    padding: 8px;
+}
+
+prompt {
+    background-color: @accent;
+    text-color: @base;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+entry {
+    placeholder: " Search Apps...";
+    placeholder-color: @text;
+    padding: 4px 10px;
+}
+
+/* The App List */
+listview {
+    columns: 2;
+    lines: 6;
+    fixed-height: true;
+    scrollbar: false;
+}
+
+element {
+    padding: 8px;
+    spacing: 10px;
+    border-radius: 10px;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: @base;
+}
+
+element-icon {
+    size: 24px;
+}

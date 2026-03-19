@@ -1,0 +1,28 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "margin": 10,
+    "output": "HDMI-A-1",
+
+    "include": [
+        "~/.config/waybar/modules/workspaces.json",
+        "~/.config/waybar/modules/language.json",
+        "~/.config/waybar/modules/performance.json"
+    ],
+
+    "modules-left": ["group/pill-work"],
+    "modules-center": [], // EMPTY - No active window here
+    "modules-right": ["group/pill-perf", "clock"],
+
+    "group/pill-work": {
+        "orientation": "horizontal",
+        "modules": ["hyprland/workspaces", "hyprland/language"]
+    },
+
+    "group/pill-perf": {
+        "orientation": "horizontal",
+        "modules": ["cpu", "temperature", "custom/gpu"]
+    },
+
+    "clock": { "format": "{:%H:%M}" }
+}
