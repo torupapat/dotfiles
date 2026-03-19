@@ -1,3 +1,6 @@
+add_newline = false
+palette = "catppuccin_mocha"
+
 format = """
 [](surface0)\
 $os\
@@ -8,12 +11,50 @@ $git_status\
 [](fg:surface1 bg:mauve)\
 $nodejs\
 $python\
-[](fg:mauve bg:base)\
+[ ](fg:mauve)\
 $character"""
 
-palette = "catppuccin_mocha"
+[os]
+disabled = false
+style = "bg:surface0 fg:text"
 
-[palatte.catppuccin_mocha]
+[os.symbols]
+Arch = "󰣇 "
+
+[directory]
+style = "bg:surface0 fg:text"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = ".../"
+
+[git_status]
+style = "bg:surface1 fg:text"
+modified = "󰏫 " 
+staged = "󰐖 "
+ahead = "󰶣 "
+behind = "󰶡 "
+format = "[[($all_status$ahead_behind )]($style)]($style)"
+
+[git_branch]
+symbol = " "
+style = "bg:surface1 fg:text"
+format = "[$symbol $branch ]($style)" # Simplified
+
+[nodejs]
+symbol = "󰎙 "
+style = "bg:mauve fg:base"
+format = "[$symbol($version)]($style) "
+
+[python]
+symbol = " "
+style = "bg:mauve fg:base"
+format = "[$symbol($version)]($style) "
+
+[character]
+success_symbol = "[❯](bold mauve)"
+error_symbol = "[❯](bold red)"
+
+[palettes.catppuccin_mocha]
 text = "#cdd6f4"
 subtext0 = "#a6adc8"
 surface0 = "#313244"
@@ -24,24 +65,3 @@ crust = "#11111b"
 mauve = "#cba6f7"
 sapphire = "#74c7ec"
 lavender = "#b4befe"
-
-[directory]
-style = "bg:surface0 fg:text"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = ".../"
-
-[git_branch]
-symbol = " "
-style = "bg:surface1 fg:text"
-format = "[[ $symbol $branch ]($style)]($style)"
-
-[nodejs]
-symbol = "󰎙 "
-style = "bg:mauve fg:base"
-format = "[[ $symbol ($version) ]($style)]($style)"
-
-[python]
-symbol = " "
-style = "bg:mauve fg:base"
-format = "[[ $symbol ($version) ]($style)]($style)"

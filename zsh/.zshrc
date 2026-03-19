@@ -5,6 +5,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # custom aliases
 alias wr='killall waybar; waybar -c ~/.config/waybar/config & waybar -c ~/.config/waybar/config_vertical.jsonc & disown'
 alias v='nvim'
-alias ls='lsd'
+alias ls='eza --icons --group-directories-first'
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+source <(fzf --zsh)
+
