@@ -1,3 +1,5 @@
+# added cargo binaries path
+export PATH="$HOME/.cargo/bin:$PATH"
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -26,7 +26,10 @@ vim.opt.rtp:prepend(lazypath)
 -- Init lazy.nvim
 -- plugin list in {}
 require("lazy").setup({
-	spec = {},
+	spec = {
+        -- Import every plugins in lua/plugins directory
+        { import = "plugins" },
+    },
 	install = { colorscheme = { "habamax" } }, -- fallback themes
 	checker = { enabled = true },
 })
