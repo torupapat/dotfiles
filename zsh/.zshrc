@@ -10,6 +10,7 @@ alias v='nvim'
 alias ls='eza --icons --group-directories-first'
 alias j='z'
 alias ji='zi'
+alias b='bat'
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
