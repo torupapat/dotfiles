@@ -40,8 +40,9 @@ return {
 
       -- THE NATIVE FIX: Use vim.lsp.config instead of the deprecated framework
       -- 1. Apply global defaults (like capabilities for completion)
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
       vim.lsp.config('*', {
-        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        capabilities = capabilities,
       })
 
       -- 2. Enable your specific servers
