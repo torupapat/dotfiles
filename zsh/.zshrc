@@ -11,6 +11,7 @@ alias ls='eza --icons --group-directories-first'
 alias j='z'
 alias ji='zi'
 alias b='bat'
+alias apt='./awakened-poe-trade/main/dist/Awakened\ PoE\ Trade-3.28.103.AppImage --ozone-platform=x11'
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
