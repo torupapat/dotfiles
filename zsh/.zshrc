@@ -1,5 +1,7 @@
-# added cargo binaries path
+# Export PATH for programs
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -20,4 +22,3 @@ eval "$(zoxide init zsh)"
 
 source <(fzf --zsh)
 
-export PATH="$HOME/.local/bin:$PATH"
