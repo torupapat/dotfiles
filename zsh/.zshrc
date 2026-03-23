@@ -12,9 +12,12 @@ alias j='z'
 alias ji='zi'
 alias b='bat'
 alias apt='./awakened-poe-trade/main/dist/Awakened\ PoE\ Trade-3.28.103.AppImage --ozone-platform=x11'
+alias poweroff='systemctl poweroff'
+alias c='claude'
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 source <(fzf --zsh)
 
+export PATH="$HOME/.local/bin:$PATH"
