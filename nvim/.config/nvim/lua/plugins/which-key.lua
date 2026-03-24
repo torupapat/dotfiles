@@ -25,18 +25,7 @@ return {
 		},
 	},
 
-	config = function(_, opts)
-		local wk = require("which-key")
-		wk.setup(opts)
-
-		-- 2026 Mapping Spec: Registering your existing groups
-		wk.add({
-			{ "<leader>f", group = "Format/File" },
-			{ "<leader>c", group = "Code/LSP" },
-			{ "<leader>r", group = "Rename/Refactor" },
-			{ "<leader>d", group = "Diagnostics" },
-			{ "<leader>s", group = "Search (Telescope)" },
-			{ "g", group = "Go To..." },
-		})
+	opts = function(_, opts)
+		return opts
 	end,
 }
