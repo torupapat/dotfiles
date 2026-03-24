@@ -33,3 +33,5 @@ opt.splitright = true -- New vertical splits go to the right
 opt.splitbelow = true -- New horizontal splits go to the bottom
 
 opt.clipboard = "unnamedplus" -- Yank to clipboard
+
+opt.autoread = true -- Aggressive Autoread: reload files modified by external means immediately

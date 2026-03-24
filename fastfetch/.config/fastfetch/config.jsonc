@@ -19,6 +19,7 @@
     },
     "modules": [
         "title",
+        "publicip",
         "separator",
         {
             "type": "os",
