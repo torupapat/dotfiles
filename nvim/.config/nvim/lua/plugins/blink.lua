@@ -1,10 +1,14 @@
 return {
-	"Saghen/blink.cmp",
+	"saghen/blink.cmp",
 	lazy = false, -- Completion should always be ready
-	dependencies = { "rafamadriz/friendly-snippets" },
+	dependencies = {
+		"saghen/blink.lib",
+		"rafamadriz/friendly-snippets",
+	},
 
-	-- 2026 Rust Build: This compiles the high-performance core
-	build = "cargo build --release",
+	build = function()
+		require("blink.cmp").build():wait(60000)
+	end,
 
 	init = function()
 		vim.opt.runtimepath:append("/home/torumon/.local/share/nvim/lazy/blink.cmp")

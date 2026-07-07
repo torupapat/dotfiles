@@ -5,7 +5,13 @@ return {
 		init = function()
 			vim.opt.runtimepath:append("/home/torumon/.local/share/nvim/lazy/mason.nvim")
 		end,
-		opts = { ui = { border = "rounded" } },
+		opts = {
+			ui = { border = "rounded" },
+			registries = {
+				"github:mason-org/mason-registry",
+				"github:crashdummyy/mason-registry",
+			},
+		},
 	},
 
 	-- 2. Native LSP Setup: No more require('lspconfig')
@@ -45,10 +51,34 @@ return {
 				capabilities = capabilities,
 			})
 
+			-- Teach lua_ls about the Neovim runtime so `vim` is a known global
+			vim.lsp.config("lua_ls", {
+				settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+						workspace = {
+							library = vim.api.nvim_get_runtime_file("", true),
+							checkThirdParty = false,
+						},
+					},
+				},
+			})
+
 			-- 2. Enable your specific servers
 			-- Neovim automatically looks into nvim-lspconfig's /lsp directory
 			-- to find the 'ts_ls', 'pyright', etc., definitions.
 			vim.lsp.enable({ "lua_ls", "pyright", "ts_ls", "bashls" })
 		end,
+	},
+
+	-- 3. Roslyn LSP for C# / Unity (replaces OmniSharp)
+	-- Install the server once via :MasonInstall roslyn
+	{
+		"seblj/roslyn.nvim",
+		ft = "cs",
+		init = function()
+			vim.opt.runtimepath:append("/home/torumon/.local/share/nvim/lazy/roslyn.nvim")
+		end,
+		opts = {},
 	},
 }
