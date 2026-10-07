@@ -7,7 +7,7 @@
 	"gtk-layer-shell": true,
 	"height": 40,
 	"margin": 10,
-	"output": ["DP-2", "DP-1"],
+	"output": ["DP-2", "DP-3"],
 
 	// Import modules
 	"include": [
