@@ -74,3 +74,4 @@ eval "$(zoxide init zsh)"
 
 source <(fzf --zsh)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

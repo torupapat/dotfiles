@@ -77,6 +77,18 @@ window#waybar.empty #window {
 	border: none;
 }
 
+/* Tooltips (date pill calendar, etc.) */
+tooltip {
+	background: @base;
+	border: 2px solid @accent;
+	border-radius: 16px;
+}
+
+tooltip label {
+	color: @text;
+	padding: 8px 12px;
+}
+
 /* Make GPU color a bit different if you want it to stand out */
 #custom-gpu {
     border-color: @sapphire;

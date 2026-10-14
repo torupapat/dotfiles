@@ -28,12 +28,40 @@
 
 	"group/pill-right": {
 		"orientation": "horizontal",
-		"modules": ["pulseaudio", "hyprland/language", "clock", "tray"]
+		"modules": ["pulseaudio", "hyprland/language", "clock#date", "clock", "tray"]
 	},
 
 	// Standard modules
+	"hyprland/window": {
+		"separate-outputs": true
+	},
+
 	"clock": {
         	"format": "{:%H:%M %p}",
-        	"tooltip-format": "{:%d %B %Y}"
-    }
+        	"tooltip": false
+    },
+
+	// Date pill: hover for calendar, scroll = change month,
+	// right-click = month/year view, middle-click = back to today
+	"clock#date": {
+		"format": "󰸗 {:%a %d %b}",
+		"tooltip-format": "{calendar}",
+		"calendar": {
+			"mode": "month",
+			"mode-mon-col": 3,
+			"on-scroll": 1,
+			"format": {
+				"months":   "<span color='#cba6f7'><b>{}</b></span>",
+				"days":     "<span color='#cdd6f4'>{}</span>",
+				"weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+				"today":    "<span background='#cba6f7' color='#1e1e2e'><b>{}</b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-middle": "shift_reset",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	}
 }

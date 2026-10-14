@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# wl-copy shim: label plain text as text/plain.
+#
+# Without --type, wl-copy guesses the MIME type from the content, so text that
+# starts with "From " becomes application/mbox and JSON becomes
+# application/json. Terminals and browsers only paste text/*, so the copy looks
+# like it never happened. Claude Code copies selections this way.
+#
+# Only stdin copies with no --type are touched, and only when the content is
+# text that got a non-text, non-image type. Everything else goes straight
+# through to the real wl-copy.
+
+real=/usr/bin/wl-copy
+
+skip_next=false
+for arg in "$@"; do
+	if $skip_next; then
+		skip_next=false
+		continue
+	fi
+	case $arg in
+		-s | --seat) skip_next=true ;;
+		-t* | --type | --type=* | -c | --clear | -h | --help | -v | --version | --) exec "$real" "$@" ;;
+		-*) ;;
+		*) exec "$real" "$@" ;; # text given as arguments, not stdin
+	esac
+done
+
+tmp=$(mktemp) || exec "$real" "$@"
+cat >"$tmp"
+mime=$(file -b --mime -- "$tmp")
+exec <"$tmp"
+rm -f -- "$tmp"
+
+type=${mime%%;*}
+charset=${mime##*charset=}
+
+if [[ $charset == binary || $type == text/* || $type == image/* ]]; then
+	exec "$real" "$@"
+fi
+exec "$real" --type 'text/plain;charset=utf-8' "$@"
