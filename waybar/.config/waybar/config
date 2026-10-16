@@ -7,7 +7,7 @@
 	"gtk-layer-shell": true,
 	"height": 40,
 	"margin": 10,
-	"output": ["DP-2", "DP-3"],
+	"output": ["ASUSTek COMPUTER INC VG279Q3A S1LMTF140392", "CORSAIR MEMORY Inc. 45WQHD240 A2RIC31480J1"],
 
 	// Import modules
 	"include": [

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Screenshot for a box session: select a region, save it in the box's ~/drop/shots (through the
+# ~/box/drop mount), and copy its box path as text, to paste into ssh hub with Ctrl+Shift+V.
+set -u
+drop=~/box/drop
+if ! mountpoint -q "$drop"; then
+    notify-send -u critical "Screenshot not saved" "$drop is not mounted"
+    exit 1
+fi
+mkdir -p "$drop/shots" || exit 1
+f="shot-$(date +%Y%m%d-%H%M%S).png"
+hyprcap shot region -z -N -w -o "$drop/shots" -f "$f" || exit 1
+[ -s "$drop/shots/$f" ] || exit 1  # the selection was cancelled
+path="/home/claude/drop/shots/$f"
+printf '%s' "$path" | wl-copy --type text/plain
+notify-send "Screenshot on the box" "$path (path copied)"

@@ -2,7 +2,7 @@
     "layer": "bottom",
     "position": "bottom",
     "margin": 10,
-    "output": "HDMI-A-1",
+    "output": "ASUSTek COMPUTER INC VG279Q3A S1LMTF140395",
 
     "include": [
         "~/.config/waybar/modules/workspaces.json",
