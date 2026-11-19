@@ -76,3 +76,17 @@ source <(fzf --zsh)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 hc-cargo() { CARGO_TARGET_DIR=~/.cache/hub-client-target cargo "$@" }
+hc-test() {
+  local out; out=$(hc-cargo test --workspace "$@" 2>&1)
+  local rc=$?
+  print -r -- "$out" | awk '/^test result:/ {p+=$4; f+=$6; i+=$8} END {printf "passed %d, failed %d, ignored %d\n", p, f, i}'
+  (( rc != 0 )) && print -r -- "$out" | grep -E -A15 '^(---- |error|failures:)|FAILED|panicked'
+  return rc
+}
+hc-install() {
+  ( cd ~/box/code/hub-client &&
+    hc-cargo install --locked --path crates/cli &&
+    hc-cargo install --locked --path crates/hubd &&
+    hc-cargo install --locked --path crates/tui &&
+    hc-cargo install --locked --path crates/map --bin hub-pane )
+}

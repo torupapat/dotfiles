@@ -27,3 +27,10 @@ local grabbed = { dont_inhibit = true, allow_input_capture = true }
 hl.bind(mainMod .. " + left", hl.dsp.focus({ monitor = mon.left }), grabbed)
 hl.bind(mainMod .. " + down", hl.dsp.focus({ monitor = mon.main }), grabbed)
 hl.bind(mainMod .. " + right", hl.dsp.focus({ monitor = mon.vert }), grabbed)
+
+-- PoE binding
+local eh = os.getenv("HOME") .. "/.cargo/bin/exile-helper"
+hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd(eh .. " prev"))
+hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd(eh .. " next"))
+hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd(eh .. " toggle"))
+hl.bind(mainMod .. " + F4", hl.dsp.exec_cmd(eh .. " pause"))

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# xTool Studio (Windows build) under Wine. Setup follows
+# https://github.com/gregmatthewcrossley/xtool-studio-linux; needs Wine >= 11.5,
+# older Wine hangs before the window appears (DWrite stack overflow).
+#
+# --use-angle=vulkan: ANGLE's default D3D11 backend fails under Wine and the
+# editor canvas stays blank. --use-angle=gl black-screens the whole app.
+#
+# Output must go to a regular file. Under Wine, Node can't use a pipe or socket
+# as stderr (EBADF), so launching from a desktop entry or through `| tee` swaps
+# the real error for a generic "JavaScript error in the main process" dialog.
+export WINEPREFIX=~/.local/share/wineprefixes/xtool-studio
+export WINEDEBUG="${WINEDEBUG:-fixme-all,err-all}"
+
+log_dir=~/.local/share/xtool-studio/logs
+log="$log_dir/xtool-studio.log"
+mkdir -p "$log_dir"
+[ -f "$log" ] && mv -f "$log" "$log.1"
+
+cd "$WINEPREFIX/drive_c/Program Files/xTool Studio" || exit 1
+exec wine "xTool Studio.exe" --no-sandbox --use-angle=vulkan "$@" > "$log" 2>&1
